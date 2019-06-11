@@ -1,0 +1,839 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{UCU Linear Algebra}
+\newcommand\hwnumber{3}                  % <-- homework number
+\newcommand\NetIDa{Ivan Prodaiko}
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\chead{\textbf{\Large Homework \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+\section*{Problem 1}
+
+\begin{enumerate}[label=(\alph*)]
+    \item
+        $A = \begin{pmatrix}
+            \dfrac{1}{2} & \dfrac{3}{2} \\
+            \dfrac{1}{2} & -\dfrac{1}{2}
+        \end{pmatrix}$
+        
+        matrix A has constant columns sum, so one eigenvalue is equal to its sum equal to 1.
+    \item
+        $A = \begin{pmatrix}
+            1 & -2 \\
+            -2 & 4
+        \end{pmatrix}$
+        
+        $det(A) = 4 - 4 = 0$
+        
+        Thus 0 is an eigenvalue and matrix is singular. By trace rule $tr(A) = 5$.
+        
+        $\lambda_1 = 0\quad\lambda_2 = 5$
+    \item
+        $A = \begin{pmatrix}
+            1 & 2 \\
+            4 & 3
+        \end{pmatrix}$
+        
+        Sum of each column is equal to one another, so one of eigenvalues is $\lambda_1 = 5$.
+        
+        By trace rule $tr(A) = 4$
+        
+        $\lambda_1 = 5\quad\lambda_ 2 = -1$
+    \item
+        $A = \begin{pmatrix}
+            0 & 2 & 1 \\
+            2 & 0 & 1 \\
+            1 & 2 & 0
+        \end{pmatrix}$
+        Sum of each row = 3 thus $\lambda_1 = 3$
+        
+        $tr(A) = \lambda_1 + \lambda_2 + \lambda_3 = 0$
+        
+        $det(A) = \lambda_1\lambda_2\lambda_3 = 6$
+        
+        $\lambda_2 + \lambda_3 = -3$
+        
+        $\lambda_2\lambda_3 = 2$
+        
+        $\lambda_2 = -2\quad\lambda_3 = -1$
+    \item
+        $A = \begin{pmatrix}
+            2 & 0 & 2 \\
+            0 & 4 & 0 \\
+            3 & 0 & 2
+        \end{pmatrix}$
+        
+        tr(A) = 2 + 4 + 2 = 8
+        
+        det(A) = -8
+        
+        It is easy to see, that if we subtract 4I from A we will get singular matrix, thus we could claim that 4 is an eigenvalue.
+        
+        $\lambda_1 = 4$
+        
+        $\lambda_2 + \lambda_3 = 8 - \lambda_1 = 4$
+        
+        $\lambda_2\lambda_3 = -2$
+        
+        $\lambda^2 - 4\lambda - 2 = 0$
+        
+        $D = 16 - 4 (-2) 1 = 32$
+        
+        $\lambda_2 = 2 + 2\sqrt{2}\quad\lambda_3 = 2 - 2\sqrt{2}$
+\end{enumerate}
+
+\section*{Problem 2}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $A = \begin{pmatrix}
+            2 & 3 \\
+            2 & 1
+        \end{pmatrix}$
+        
+        $\lambda_1 = 4\quad\lambda_2 = -1$
+        
+        $B_1 =  \begin{pmatrix} 2 & 3 \\ 2 & 1 \end{pmatrix} - 
+                \begin{pmatrix} 4 & 0 \\ 0 & 4 \end{pmatrix} = 
+                \begin{pmatrix} -2 & 3 \\ 2 & -3 \end{pmatrix}$
+                
+        $B_2 =  \begin{pmatrix} 2 & 3 \\ 2 & 1 \end{pmatrix} - 
+                \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} = 
+                \begin{pmatrix} 3 & 3 \\ 2 & 2 \end{pmatrix}$       
+                
+        $\begin{pmatrix}[cc|c]
+          -2 & 3 & 0\\
+          2 & -3 & 0
+        \end{pmatrix} = -2x_1 + 3x_2 = 0$
+        
+        $-2x_1 = -3x_2$
+        
+        $x_1 = \dfrac{3}{2}x_2$
+        
+        $x_1 = \dfrac{3}{2}\quad x_2 = 1$
+        
+        $\vec{v_1} = \begin{pmatrix} \dfrac{3}{2} \\ 1 \end{pmatrix}$
+        
+        $\begin{pmatrix}[cc|c]
+          3 & 3 & 0\\
+          2 & 2 & 0
+        \end{pmatrix} = 3x_1 + 3x_2 = 0$
+        
+        $3x_1 = -3x_2$
+        
+        $x_1 = -x_2$
+        
+        $x_1 = -1\quad x_2 = 1$
+        
+        $\vec{v_2} = \begin{pmatrix} -1 \\ 1 \end{pmatrix}$
+        \item
+        
+        $A = \begin{pmatrix}
+            -2 & 2 & 3 \\
+            -2 & 3 & 2 \\
+            -4 & 2 & 5
+        \end{pmatrix}$
+        
+        $tr(A) = 6 \quad det(A) = 6$
+        
+        $\lambda_1 = 3$ because all row sums are equal to $3$
+        
+        $\lambda_2\lambda_3 = \dfrac{6}{3} = 2$
+        
+        $\lambda_2 + \lambda_3 = 6 - \lambda_1 = 3$
+        
+        $\lambda_2 = 2\quad\lambda_3 = 1$
+        
+        $\begin{pmatrix}
+            -2 & 2 & 3 \\
+            -2 & 3 & 2 \\
+            -4 & 2 & 5
+        \end{pmatrix} - \begin{pmatrix}
+            3 & 0 & 0 \\
+            0 & 3 & 0 \\
+            0 & 0 & 3
+        \end{pmatrix} = \begin{pmatrix}
+            -5 & 2 & 3 \\
+            -2 & 0 & 2 \\
+            -4 & 2 & 2
+        \end{pmatrix} => \begin{pmatrix}
+            1 & -\dfrac{2}{5} & -\dfrac{3}{5} \\
+            0 & 1 & -1 \\
+            0 & 0 & 0
+        \end{pmatrix}$
+        
+        $x_2 = x_3 = 1\quad x_1=\dfrac{2}{5}+\dfrac{3}{5}$
+        
+        $\vec{v_1} = \begin{pmatrix}
+            1\\
+            1\\
+            1
+        \end{pmatrix}$
+        
+        $\begin{pmatrix}
+            -2 & 2 & 3 \\
+            -2 & 3 & 2 \\
+            -4 & 2 & 5
+        \end{pmatrix} - \begin{pmatrix}
+            2 & 0 & 0 \\
+            0 & 2 & 0 \\
+            0 & 0 & 2
+        \end{pmatrix} = \begin{pmatrix}
+            -4 & 2 & 3 \\
+            -2 & 1 & 2 \\
+            -4 & 2 & 3
+        \end{pmatrix} => \begin{pmatrix}
+            1 & -\dfrac{1}{2} & 0 \\
+            0 & 0 & 1 \\
+            0 & 0 & 0
+        \end{pmatrix}$
+        
+        $x_1 = x_2 = \dfrac{1}{2}\quad x_3=0$
+        
+        $\vec{v_2} = \begin{pmatrix}
+            \dfrac{1}{2}\\
+            1\\
+            0
+        \end{pmatrix}$
+        
+        $\begin{pmatrix}
+            -2 & 2 & 3 \\
+            -2 & 3 & 2 \\
+            -4 & 2 & 5
+        \end{pmatrix} - \begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{pmatrix} = \begin{pmatrix}
+            -3 & 2 & 3 \\
+            -2 & 2 & 2 \\
+            -4 & 2 & 4
+        \end{pmatrix} => \begin{pmatrix}
+            1 & 0 & -1 \\
+            0 & 1 & 0 \\
+            0 & 0 & 0
+        \end{pmatrix}$
+        
+        $x_1 = x_3 = 1\quad x_2=0$
+        
+        $\vec{v_3} = \begin{pmatrix}
+            1\\
+            0\\
+            1
+        \end{pmatrix}$
+        
+        $A^2, A^{100}$:
+        \begin{enumerate}
+            \item
+                $\lambda_1 = 16 \quad \lambda_2 = 1 \quad\quad\quad\quad\quad\quad \lambda_1 = 4^{100} \quad \lambda_2 = 1$
+            \item
+                $\lambda_1 = 9 \quad \lambda_2 = 4 \quad \lambda_3 = 1 \quad\quad\quad \lambda_1 = 3^{100} \quad \lambda_2 = 2^{100} \quad \lambda_3 = 1$
+        \end{enumerate}
+        $Av = \lambda v$
+        
+        $A^2v = \lambda^2v$
+        
+        So, with increasing of power eigenvalue would change accordingly while eigenvectors would stay the same
+        
+        $A^{-1}$:
+        $A^{-1}Av = A^{-1}\lambda v$
+        
+        $v = A^{-1}\lambda v$
+        
+        $A^{-1}v = \dfrac{1}{\lambda} v$
+        
+        So, as expected, eigenvalues will change, while eigenvectors would stay the same.
+        
+        $e^{tA}$:
+        
+        $Av = \lambda v$
+        
+        $e^{tA}v = e^{t\lambda}v$
+    \end{enumerate}
+    
+\section*{Problem 3}
+If A $n$ x $n$ matrix has $n$ distinct eigenvalues, than $D$ is equal to matrix with eigenvalues of $A$ on its main diagonal.
+\begin{enumerate}[label=(\alph*)]
+    \item
+        $A = \begin{pmatrix}
+            2 & 3 \\
+            2 & 1
+        \end{pmatrix}$
+        
+        $\lambda_1 = 4\quad\lambda_2 = -1$
+        
+        $\vec{v_1} = \begin{pmatrix} \dfrac{3}{2} \\ 1 \end{pmatrix}$
+        \quad
+        $\vec{v_2} = \begin{pmatrix} -1 \\ 1 \end{pmatrix}$
+        
+        $D = \begin{pmatrix} 
+            4 & 0 \\
+            0 & -1
+        \end{pmatrix}$
+        
+        Knowing that $AP = PD$ lets check our results.
+        
+        $P = \begin{pmatrix} 
+            \dfrac{3}{2} & -1 \\ 
+            1 & 1 
+        \end{pmatrix}$
+        
+        $AP = \begin{pmatrix}
+            2 & 3 \\
+            2 & 1
+        \end{pmatrix}
+        \begin{pmatrix} 
+            \dfrac{3}{2} & -1 \\ 
+            1 & 1 
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            6 & 1 \\
+            4 & -1
+        \end{pmatrix}$
+        
+        $PD = \begin{pmatrix} 
+            \dfrac{3}{2} & -1 \\ 
+            1 & 1 
+        \end{pmatrix}
+        \begin{pmatrix} 
+            4 & 0 \\
+            0 & -1
+        \end{pmatrix} = \begin{pmatrix}
+            6 & 1 \\
+            4 & -1
+        \end{pmatrix}$
+        
+        $D$ is correctly found.
+    \item
+        $A = \begin{pmatrix} 
+            2 & 1 \\ 
+            5 & -2 
+        \end{pmatrix}$
+        
+        $det(A) = \lambda_1\lambda_2 = -4 - 5 = -9$
+        
+        $tr(A) = \lambda_1+\lambda_2 = 0$
+        
+        $\lambda_1 = 3\quad \lambda_2 = -3$
+        
+        $D = \begin{pmatrix} 
+            3 & 0 \\ 
+            0 & -3 
+        \end{pmatrix}$
+        
+        $v_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$
+        \quad
+        $v_2 = \begin{pmatrix} -\dfrac{1}{5} \\ 1 \end{pmatrix}$
+        
+        $P = \begin{pmatrix} 
+            1 & -\dfrac{1}{5} \\ 
+            1 & 1 
+        \end{pmatrix}$
+        
+        $AP = \begin{pmatrix}
+            2 & 1 \\ 
+            5 & -2
+        \end{pmatrix}
+        \begin{pmatrix} 
+            1 & -\dfrac{1}{5} \\ 
+            1 & 1 
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            3 & \dfrac{3}{5} \\ 
+            3 & -3
+        \end{pmatrix}$
+        
+        $PD = 
+        \begin{pmatrix} 
+            1 & -\dfrac{1}{5} \\ 
+            1 & 1 
+        \end{pmatrix}
+        \begin{pmatrix} 
+            3 & 0 \\ 
+            0 & -3
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            3 & \dfrac{3}{5} \\ 
+            3 & -3
+        \end{pmatrix}$
+    \item
+        $A = \begin{pmatrix}
+            1 & 3 \\
+            2 & 2
+        \end{pmatrix}$
+        
+        $\lambda_1 = 4\quad\lambda_2 = -1$
+    
+    \item
+    $A = \begin{pmatrix} 
+            2 & 1 \\ 
+            5 & -2 
+        \end{pmatrix}$
+        
+    Sums of rows = 3, thus $\lambda_1 = 3$
+    
+    $tr(A) = 6$
+    
+    $\lambda_2 = 3$
+    
+    $P = \begin{pmatrix} 
+            1 & 1 \\ 
+            1 & 1 
+        \end{pmatrix}$
+        
+    $P$ doesn't form a basis. $A$ is not diagonalizable.
+\end{enumerate}
+
+\section*{Problem 4}
+
+ $A = \begin{pmatrix}
+            3 & -2 & 0 \\
+            0 & 3 & 0 \\
+            0 & 1 & 3
+        \end{pmatrix}$
+        
+$\lambda_{1, 2, 3} = 3$
+
+Lets find eigenvectors
+
+$A = \begin{pmatrix}
+            3 & -2 & 0 \\
+            0 & 3 & 0 \\
+            0 & 1 & 3
+        \end{pmatrix} - \begin{pmatrix}
+            3 & 0 & 0 \\
+            0 & 3 & 0 \\
+            0 & 0 & 3
+        \end{pmatrix} = \begin{pmatrix}
+            0 & -2 & 0 \\
+            0 & 0 & 0 \\
+            0 & 1 & 0
+        \end{pmatrix}$
+
+After row reduction we have:
+
+$\begin{pmatrix}
+            0 & 1 & 0 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{pmatrix}$
+        
+This means, that our eigenvectors are in the form $v_{1, 2} = \begin{pmatrix}
+            a \\
+            0 \\
+            b
+        \end{pmatrix}$
+        
+But in order to form matrix P we must complete the basis, so we need to find generalized eigenvector $(A - \lambda I)v_k = v_{k-1}$
+
+$\begin{pmatrix}
+            0 & -2 & 0 \\
+            0 & 0 & 0 \\
+            0 & 1 & 0
+        \end{pmatrix}\begin{pmatrix}
+            x \\
+            y \\
+            z
+        \end{pmatrix} = \begin{pmatrix}
+            a \\
+            0 \\
+            b
+        \end{pmatrix}$
+        
+So, as we could see, we need to find such a vector, that contains the $y$ value non zero (to increase rank). The simplest vector possible in this case is:
+
+$v_3 = \begin{pmatrix}
+            0 \\
+            1 \\
+            0
+        \end{pmatrix}$
+        
+$v_ 2 = \begin{pmatrix}
+            0 & -2 & 0 \\
+            0 & 0 & 0 \\
+            0 & 1 & 0
+        \end{pmatrix}\begin{pmatrix}
+            0 \\
+            1 \\
+            0
+        \end{pmatrix} = \begin{pmatrix}
+            -2 \\
+            0 \\
+            1
+        \end{pmatrix}$
+
+$v_ 1 = \begin{pmatrix}
+            0 & -2 & 0 \\
+            0 & 0 & 0 \\
+            0 & 1 & 0
+        \end{pmatrix}\begin{pmatrix}
+            -2 \\
+            0 \\
+            1
+        \end{pmatrix} = \begin{pmatrix}
+            0 \\
+            0 \\
+            0
+        \end{pmatrix}$
+
+With such a vector $v_1$ we aren't able to form a basis. So, lets change it (we are allowed to do this, as far as we are restricted only by form of a vector $\begin{pmatrix}
+            a \\
+            0 \\
+            b
+        \end{pmatrix}$).
+        
+We will take $\begin{pmatrix}
+            2 \\
+            0 \\
+            0
+        \end{pmatrix}$ in order to eliminate $D_{13}$ entry.
+        
+Thus we have $P = \begin{pmatrix}
+            2 & -2 & 0 \\
+            0 & 0 & 1 \\
+            0 & 1 & 0
+        \end{pmatrix}$
+        
+$P^{-1}AP = \begin{pmatrix}
+            \dfrac{1}{2} & 0 & 1 \\
+            0 & 0 & 1 \\
+            0 & 1 & 0
+        \end{pmatrix}\begin{pmatrix}
+            3 & -2 & 0 \\
+            0 & 3 & 0 \\
+            0 & 1 & 3
+        \end{pmatrix}\begin{pmatrix}
+            2 & -2 & 0 \\
+            0 & 0 & 1 \\
+            0 & 1 & 0
+        \end{pmatrix} = \begin{pmatrix}
+            3 & 0 & 0 \\
+            0 & 3 & 1 \\
+            0 & 0 & 3
+        \end{pmatrix}$
+
+\section*{Problem 5}
+\begin{enumerate}[label=(\alph*)]
+    \item
+    $\vec{x_n} = A\vec{x_{n-1}}$
+    
+    $\vec{x_n} = PD^{n}P^{-1}\vec{x_0} = A^n\vec{x_0}$
+    
+    $\vec{x_n} = \begin{pmatrix}
+            \dfrac{1}{2} & 0 & 1 \\
+            0 & 0 & 1 \\
+            0 & 1 & 0
+        \end{pmatrix}\begin{pmatrix}
+            3^n & 0 & 0 \\
+            0 & 3^n & 0 \\
+            0 & 0 & 3^n
+        \end{pmatrix}\begin{pmatrix}
+            2 & -2 & 0 \\
+            0 & 0 & 1 \\
+            0 & 1 & 0
+        \end{pmatrix} = \begin{pmatrix}
+            3^n\\
+            3^n\\
+            3^n
+        \end{pmatrix}$
+\end{enumerate}
+
+\section*{Problem 7}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    In order to have the same eigenvalues, $AB$ and $BA$ must have the same characteristic polynomial, means $AB$ and $BA$ must be similar.
+    
+    If A is invertible then $A^{-1}(AB)A = BA$, so $AB$ and $BA$ are similar.
+    \item
+    $tr(AB) = tr(BA)$
+    
+    $det(AB) = det(BA)$
+    
+    So, that means they have the same characteristic polynomial, thus their eigenvalues are the same.
+\end{enumerate}
+
+\section*{Problem 8}
+\begin{enumerate}[label=(\alph*)]
+    \item
+    
+    $A^2 = (PDP^{-1})(PDP^{-1}) = PD(P^{-1}P)DP = PD^2P^{-1}$
+    
+    $A^k = PD^kP^{-1}$
+    
+    \item
+    
+    Involutory matrix is the matrix that is equal to its own inverse.
+    $n$ x $n$ matrix is diagonalizable $\iff$ it has n distinct eigenvalues.
+    As far as entries of such a matrix are only 1 and -1 than the eigenvalues will be \in $\{1, -1\}$.
+    
+    So $A^2 = P^{-1}D^2P = P^{-1}IP = P^{-1}P = I$
+    
+    $A^2 = I$
+\end{enumerate}
+
+\section*{Problem 9}
+$B = \begin{pmatrix}
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+            1 & 0 & 0
+        \end{pmatrix}$
+        
+$B^2 = \begin{pmatrix}
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+            1 & 0 & 0
+        \end{pmatrix}\begin{pmatrix}
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+            1 & 0 & 0
+        \end{pmatrix} = \begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{pmatrix}$
+        
+$det(B) = -1 \quad tr(B) = 1$
+
+$\lambda_1 = -1\quad\lambda_2 = 1\quad\lambda_3 = 1$
+
+$D = \begin{pmatrix}
+            -1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{pmatrix}$
+        
+$A_1 = \begin{pmatrix}
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+            1 & 0 & 0
+        \end{pmatrix} - \begin{pmatrix}
+            -1 & 0 & 0 \\
+            0 & -1 & 0 \\
+            0 & 0 & -1
+        \end{pmatrix} = \begin{pmatrix}
+            1 & 0 & 1 \\
+            0 & 2 & 0 \\
+            1 & 0 & 1
+        \end{pmatrix}$
+
+Lets convert it to RREF.
+
+$\begin{pmatrix}
+            1 & 0 & 1 \\
+            0 & 2 & 0 \\
+            0 & 0 & 0
+        \end{pmatrix}$, so $\vec{v_1} = \begin{pmatrix}
+            -1 \\
+            0 \\
+            1
+        \end{pmatrix}$
+        
+$A_2 = \begin{pmatrix}
+            -1 & 0 & 1 \\
+            0 & 0 & 0 \\
+            1 & 0 & -1
+        \end{pmatrix}$, so $\vec{v_2} = \begin{pmatrix}
+            1 \\
+            0 \\
+            1
+        \end{pmatrix}$
+        
+After all, we need generalized vector $v_3 = \begin{pmatrix}
+            0 \\
+            1 \\
+            0
+        \end{pmatrix}$
+        
+$P = \begin{pmatrix}
+            -1 & 1 & 0 \\
+            0 & 0 & 1 \\
+            1 & 1 & 0
+        \end{pmatrix}$
+
+$P^{-1}BP = \begin{pmatrix}
+            -\dfrac{1}{2} & 0 & \dfrac{1}{2} \\
+            \dfrac{1}{2} & 0 & \dfrac{1}{2} \\
+            0 & 1 & 0
+        \end{pmatrix}\begin{pmatrix}
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+            1 & 0 & 0
+        \end{pmatrix}\begin{pmatrix}
+            -1 & 1 & 0 \\
+            0 & 0 & 1 \\
+            1 & 1 & 0
+        \end{pmatrix} = \begin{pmatrix}
+            -1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{pmatrix}$
+
+$P^{-1}BP$ has diagonal form.
+
+\section*{Problem 11}
+$g_n = 3g_{n-1} - g_{n-2} - g_{n-3}$
+
+Having $x_n = \begin{pmatrix}
+            g_{n-2} \\
+            g_{n-1} \\
+            g_n
+        \end{pmatrix}$
+
+$Ax_n = \begin{pmatrix}
+            g_{n-2} \\
+            g_{n-1} \\
+            3g_{n-1} - g_{n-2} - g_{n-3}
+        \end{pmatrix} = x_{n+1}$
+        
+Thus we could write $A = \begin{pmatrix}
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            -1 & -1 & 3
+        \end{pmatrix} = x_{n+1}$
+
+As we have sums of each row equal, than $1$ is an eigenvalue.
+
+$det(A) = -1\quad tr(A) = 3$, thus $\lambda_2\lambda_3 = -1\quad \lambda_2 + \lambda_3 = 2$
+
+$\lambda_2 = 1 + \sqrt{2}$ $\lambda_3 = 1 - \sqrt{2}$
+
+As far as $A$ has 3 distinct eigenvalues we could determine matrix $D$.
+
+$D = \begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 1 + \sqrt{2} & 0 \\
+            0 & 0 & 1 - \sqrt{2}
+        \end{pmatrix}$
+
+Skipping eigenvectors calculation...
+
+$P = \begin{pmatrix}
+            1 & 1 & \sqrt{17} \\
+            1 & \sqrt{2} - 1 & -\sqrt{2} - 1 \\
+            1 & 1 & 1
+        \end{pmatrix}$
+        
+\section*{Problem 12}
+
+$A(x_1, x_2, x_3) = (x_3, x_1, x_2)$
+
+Transformation a is a simple permutation matrix $\begin{pmatrix}
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+            1 & 0 & 0
+        \end{pmatrix}$
+        
+$tr(A) = 0\quad det(A) = 1$ Having same sums of rows and columns we could say that $\lambda_1 = 1$
+        
+\textbf{Eigenvalues}:
+
+$\lambda_1 = 1 \quad \lambda_2 = \dfrac{1}{2}(-1 - i\sqrt{3}) \quad \lambda_3 = \dfrac{1}{2}(-1 + i\sqrt{3})$
+
+\textbf{Eigenvectors}:
+
+$\vec{v_1} = \begin{pmatrix}
+            1\\
+            1\\
+            1
+        \end{pmatrix} \quad \vec{v_2} = \begin{pmatrix}
+            \dfrac{1}{2}(-1 + i\sqrt{3})\\
+            -1 + \dfrac{1}{2}(1 - i\sqrt{3})\\
+            1
+        \end{pmatrix} \quad \vec{v_3} = \begin{pmatrix}
+            \dfrac{1}{2}(-1 - i\sqrt{3})\\
+            -1 + \dfrac{1}{2}(1 + i\sqrt{3})\\
+            1
+        \end{pmatrix}$
+
+\section*{Problem 14}
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    $det(A - \lambda I) = 0\quad det(B - \lambda I) = 0$
+    
+    $det(B - \lambda I) = det[P^{-1}(A - \lambda I) P] = det(P^{-1})det(A - \lambda I)det(P)$
+    
+    Since $det(P^{-1})det(P) = det(P^{-1}P) = det(I) = 1$
+    
+    $det(B - \lambda I) = det(A - \lambda I)$
+    \item
+    From assumption we know that $A$ and $D$ are similar, this means they share the same characteristic polynomial. Since triangular matrix has eigenvalues on its main diagonal, we could say than $D$, diagonal matrix, consists only of eigenvalues of $A$.
+    \item
+    \textbf{Determinant}:
+    
+    If $A$ is $n$ x $n$ matrix and it is diagonalziable, than it has $n$ distinct eigenvalues.
+    
+    $det(A - \lambda I) = (\lambda_1 - \lambda)(\lambda_2 - \lambda)\dots(\lambda_n - \lambda)$
+    
+    The formula above holds for every $\lambda$, so assume $\lambda = 0$, thus $det(A) = \lambda_1\lambda_2\dots\lambda_n$
+    
+    \textbf{Trace}:
+    
+    In matrix $D$ that is the matrix consisting of all the eigenvalues of matrix $A$ the $tr(D)$ is the sum of all eigenvalues.
+    
+    $A = P^{-1}DP$
+    
+    $D = tr(P^{-1}AP) = tr((AP)) = tr((AP)P^{-1}) = tr(A)$
+    \item
+    \textbf{Product}:
+    
+    The formula holds as is.
+    
+    \textbf{Sum}:
+    Using the fact that Jordan form of matrix $A$ and matrix $A$ itself share the same characteristic polynomial.
+    
+    $0 = \prod_{i=1}^n (\lambda - \lambda_i) = \lambda^n - \lambda^{n - 1}\sum_{i=1}^n\lambda_i + \dots + (-1)^n \prod_{i=1}^n \lambda_i$
+    
+    There are $n$ terms containing a power $\lambda_{n-1}$ in the determinant expansion: $−A_{11}\lambda_{n−1}\dots−A_{11}\lambda_{n-1}$. Collecting these terms, we get that the coefficient associated with $\lambda_{n-1}$ in the characteristic polynomial. 
+    We get $trace(A) = \sum_{i=1}^n\lambda_i$.
+\end{enumerate}
+
+\end{document}

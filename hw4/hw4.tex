@@ -1,0 +1,750 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{UCU Linear Algebra}
+\newcommand\hwnumber{4}                  % <-- homework number
+\newcommand\NetIDa{Ivan Prodaiko}
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\chead{\textbf{\Large Homework \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+\section*{Problem 1}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $A = \begin{pmatrix}
+            6 & -2 \\
+            -2 & 3
+        \end{pmatrix}$
+        
+        $det(A) = \begin{bmatrix}
+            6 - \lambda & -2 \\
+            -2 & 3 - \lambda
+        \end{bmatrix} = (6 - \lambda)(3 - \lambda) - 4 = \lambda^2 - 9\lambda + 14$
+        
+        $\lambda_1 = 2\quad\lambda_2 = 7$
+        
+        $\begin{pmatrix} 4 & -2 \\ -2 & 1 \end{pmatrix} => 
+                \begin{pmatrix}[cc|c] 4 & -2 & 0 \\ -2 & 1 & 0 \end{pmatrix} => 
+                \begin{pmatrix}[cc|c] 1 & -\dfrac{1}{2} & 0 \\ 0 & 0 & 0 \end{pmatrix} \quad \vec{v_1} = \begin{pmatrix} \dfrac{1}{2} \\ 1 \end{pmatrix}$
+                
+        $\begin{pmatrix} -1 & -2 \\ -2 & -4 \end{pmatrix} => 
+                \begin{pmatrix}[cc|c] -1 & -2 & 0 \\ -2 & -4 & 0 \end{pmatrix} =>
+                \begin{pmatrix}[cc|c] 1 & -2 & 0 \\ 0 & 0 & 0 \end{pmatrix} \quad \vec{v_2} = \begin{pmatrix} -2 \\ 1 \end{pmatrix}$
+        
+        $P = \begin{pmatrix} \dfrac{1}{2} & -2 \\ 1 & 1 \end{pmatrix}$
+        
+        $P^{-1} = \begin{pmatrix} \dfrac{2}{5} & \dfrac{4}{5} \\ \dfrac{-2}{5} & \dfrac{1}{5} \end{pmatrix}$
+        
+        $P^{-1}AP = 
+        \begin{pmatrix} \dfrac{2}{5} & \dfrac{4}{5} \\ -\dfrac{2}{5} & \dfrac{1}{5} \end{pmatrix}
+        \begin{bmatrix} 6 & -2 \\ -2 & 3 \end{bmatrix}
+        \begin{pmatrix} \dfrac{1}{2} & -2 \\ 1 & 1 \end{pmatrix} = 
+        \begin{pmatrix} 2 & 0 \\ 0 & 7 \end{pmatrix}
+        $
+        
+        \item
+        $A = \begin{pmatrix}
+            3 & 0 & 2\\
+            0 & 3 & 0\\
+            2 & 0 & 6
+        \end{pmatrix}$
+        
+        $det(A) = (3 - \lambda)\begin{bmatrix}
+            3 - \lambda & 2 \\
+            2 & 6 - \lambda
+        \end{bmatrix} = (3 - \lambda)((3 - \lambda)(6 - \lambda) - 4) = (3 - \lambda)(\lambda^2 - 9\lambda + 14)$
+        
+        $\lambda_1 = 3\quad\lambda_2 = 2\quad\lambda_3 = 7$
+        
+        $\begin{pmatrix} 0 & 0 & 2 \\ 0 & 0 & 0 \\ 2 & 0 & 3 \end{pmatrix} =>
+                \begin{pmatrix}[ccc|c] 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & 0 \\ 2 & 0 & 0 & 0 \end{pmatrix} \quad \vec{v_1} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$
+                
+        $\begin{pmatrix} 1 & 0 & 2 \\ 0 & 1 & 0 \\ 2 & 0 & 4 \end{pmatrix} => 
+                \begin{pmatrix}[ccc|c] 1 & 0 & 2 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \quad \vec{v_2} = \begin{pmatrix} -2 \\ 0 \\ 1 \end{pmatrix}$
+                
+         $\begin{pmatrix} -4 & 0 & 2 \\ 0 & -4 & 0 \\ 2 & 0 & -1 \end{pmatrix} => 
+                \begin{pmatrix}[ccc|c] -4 & 0 & 2 & 0 \\ 0 & -4 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \quad \vec{v_3} = \begin{pmatrix} \dfrac{1}{2} \\ 0 \\ 1 \end{pmatrix}$
+        
+        $P = \begin{pmatrix} 0 & -2 & \dfrac{1}{2} \\ 1 & 0 & 0 \\ 0 & 1 & 1 \end{pmatrix}$
+        
+        $P^{-1} = \begin{pmatrix} 
+            0 & 1 & 0 \\ 
+            \dfrac{-2}{5} & 0 & \dfrac{1}{5} \\
+            \dfrac{2}{5} & 0 & \dfrac{4}{5}
+        \end{pmatrix}$
+        
+        $P^{-1}AP = 
+        \begin{pmatrix} 
+            3 & 0 & 0 \\ 
+            0 & 2 & 0 \\
+            0 & 0 & 7 
+        \end{pmatrix}
+        $
+        
+        
+        \item
+        $A = \begin{pmatrix}
+            3 & -1 & 0\\
+            -1 & 4 & 1\\
+            0 & 1 & 5
+        \end{pmatrix}$
+        
+        $det(A) = (3 - \lambda)\begin{bmatrix}
+            4 - \lambda & 1 \\
+            1 & 5 - \lambda
+        \end{bmatrix} + \begin{bmatrix}
+            -1 & 0 \\
+            1 & 5 - \lambda
+        \end{bmatrix} = (3 - \lambda)((4 - \lambda)(5 - \lambda) - 1) + (-5 + \lambda) = (\lambda - 4)(\lambda^2 - 8\lambda + 13)$
+        
+        $\lambda_1 = 4\quad\lambda_{2} = 4 + \sqrt{3}\quad\lambda_{3} = 4 - \sqrt{3}$
+        
+        $\begin{pmatrix} -1 & -1 & 0 \\ -1 & 0 & 1 \\ 0 & 1 & 1 \end{pmatrix} => 
+                \begin{pmatrix}[ccc|c] 1 & 1 & 0 & 0 \\ 1 & 0 & -1 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \quad \vec{v_1} = \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix}$
+                
+        $\begin{pmatrix} -1 + \sqrt{3} & -1 & 0 \\ -1 & \sqrt{3} & 1 \\ 0 & 1 & 1 + \sqrt{3} \end{pmatrix} => \begin{pmatrix}[ccc|c] 1 & 0 & 2 - \sqrt{3} & 0 \\ 0 & 1 & 1 - \sqrt{3} & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \quad \vec{v_2} = \begin{pmatrix} -2 + \sqrt{3} \\ 1 \\ -1 + \sqrt{3} \end{pmatrix}$
+            
+        $\begin{pmatrix} -1 + \sqrt{3} & -1 & 0 \\ -1 & \sqrt{3} & 1 \\ 0 & 1 & 1 + \sqrt{3} \end{pmatrix} => \begin{pmatrix}[ccc|c] 1 & 0 & 2 + \sqrt{3} & 0 \\ 0 & 1 & 1 + \sqrt{3} & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix} \quad \vec{v_3} = \begin{pmatrix} 2 + \sqrt{3} \\ 1 \\ 1 + \sqrt{3} \end{pmatrix}$
+        
+        $P = \begin{pmatrix} 
+            1 & -2 + \sqrt{3} & 2 + \sqrt{3} \\ 
+            -1 & 1 & 1 \\
+            1 & -1 + \sqrt{3} & 1 + \sqrt{3}
+        \end{pmatrix}$
+        
+        $P^{-1}AP = \begin{pmatrix} 
+            4 & 0 & 0 \\ 
+            0 & 4 - \sqrt{3} & 0 \\
+            0 & 0 & 4 + \sqrt{3}
+        \end{pmatrix}$
+        
+    \end{enumerate}
+    
+\section*{Problem 2}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Eigenvalues are $\lambda_1 = -1 \lambda_2 = 3 \lambda_3 = 7$
+        
+        $\vec{v_1} = \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix} \quad
+         \vec{v_2} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \quad
+         \vec{v_3} = \begin{pmatrix} a \\ b \\ 0 \end{pmatrix}$
+         
+        $det(A) = -21\quad tr(A) = 9$
+        
+        By spectral decomposition theorem (c):
+        
+        $\vec{v_1}^T \vec{v_2} = 0 + 1 - 1 = 0$
+        
+        $\vec{v_1}^T \vec{v_3} = 0 + b - 0 = 0 => b = 0$
+        
+        $\vec{v_2}^T \vec{v_3} = a + b + 0 = a + b => 0$
+        
+        Thus we could say that the only possible vector is $\begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}$, but since the matrix $P$ formed by these vectors doesn't span the dimension of 3, there are no such $a$ and $b$.
+        \item
+        Eigenvalues are $\lambda_1 = -1 \lambda_2 = 3 \lambda_3 = 3$
+        
+        By spectral decomposition theorem (b):
+        
+        Eigenvalue of 3 should span the eigenspace with $dim = 2$, in other words it has 2 independent eigenvectors.
+        
+        From prev point: $\vec{v_1}^T \vec{v_3} = 0 + b - 0 = 0 => b = 0$
+        
+        $\begin{bmatrix}
+            1 & a \\
+            1 & b \\
+            1 & 0 \\
+        \end{bmatrix} = \begin{bmatrix}
+            1 & a \\
+            1 & 0 \\
+            1 & 0 \\
+        \end{bmatrix}$
+        In order for these two vectors to be independent $a$ must be anything, but 0.
+        
+        \item
+        $A = \lambda_1u_1u_1^T + \lambda_2u_2u_2^T + \dots + \lambda_nu_nu_n^T$
+        
+        $A = -\begin{pmatrix}
+            0 \\
+            1 \\
+            -1 \\
+        \end{pmatrix} \begin{pmatrix}0 & 1 & -1\end{pmatrix} + 3 \begin{pmatrix}
+            1 \\
+            1 \\
+            -1 \\
+        \end{pmatrix} \begin{pmatrix}1 & 1 & -1\end{pmatrix} + 3\begin{pmatrix}
+            a \\
+            0 \\
+            0 \\
+        \end{pmatrix} \begin{pmatrix}a & 0 & 0\end{pmatrix} = \begin{pmatrix}
+            3 + 3a & 3 & -3 \\
+            3 & 2 & -4 \\
+            -3 & -4 & 4 \\
+        \end{pmatrix}$
+        
+        $tr(A) = \lambda_1 + \lambda_2 + \lambda_3 = -1 + 3 + 3 = 5$
+        
+        $tr(A) = 3 + 3a + 2 + 4 = 9 + 3a = 9 + 3 (-4/3) = 5$
+        
+        $A = \begin{pmatrix}
+            3 + 3(-\dfrac{4}{3}) & 3 & -3 \\
+            3 & 2 & -4 \\
+            -3 & -4 & 4 \\
+        \end{pmatrix}$
+        
+        $A = \begin{pmatrix}
+            -1 & 3 & -3 \\
+            3 & 2 & -4 \\
+            -3 & -4 & 4 \\
+        \end{pmatrix}$
+    \end{enumerate}
+
+\section*{Problem 3}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $\lambda_1 = 1 \lambda_2 = 2 \lambda_3 = \lambda$
+        
+        $\vec{v_1} = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} \quad
+         \vec{v_2} = \begin{pmatrix} 1 \\ 1 \\ -1 \end{pmatrix} \quad
+         \vec{v_3} = \begin{pmatrix} a \\ b \\ 0 \end{pmatrix}$
+         
+        $\vec{v_1}^T \vec{v_2} = 1 + 0 - 1 = 0$
+        
+        $\vec{v_1}^T \vec{v_3} = a = 0$
+        
+        $\vec{v_2}^T \vec{v_3} = a + b + 0 = a + b => 0$ 
+        
+        Thus we could state that with $v_3 = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}$ we will not span the eigenspace with $dim = 3$.
+        
+        $P = \begin{pmatrix}
+            1 & 1 & 0 \\
+            0 & 1 & b \\
+            1 & -1 & 0 \\
+        \end{pmatrix}$
+        
+        $a = 0, b = $ anything, except 0
+        
+        In order to span the space we must take the vector $v_3 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}$. This means we have only 2 eigenvalues and 3-rd eigenvector is generalized one.
+        
+        Thus, lets solve the task both for case when $\lambda_3 = 1$ or when $\lambda_3 = 2$
+        
+        $\lambda_3 = 1$
+        
+        $A = P^{-1}DP = \begin{pmatrix}
+            \dfrac{1}{2} & 0 & \dfrac{1}{2} \\
+            \dfrac{1}{2} & 0 & -\dfrac{1}{2} \\
+            -\dfrac{1}{2} & 1 & \dfrac{1}{2} \\
+        \end{pmatrix}\begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 2 & 0 \\
+            0 & 0 & 1 \\
+        \end{pmatrix}\begin{pmatrix}
+            1 & 1 & 0 \\
+            0 & 1 & 1 \\
+            1 & -1 & 0 \\
+        \end{pmatrix} = \begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 1 & 2 \\
+        \end{pmatrix}$
+        
+        $\lambda_3 = 2$
+        
+        $A = P^{-1}DP = \begin{pmatrix}
+            \dfrac{1}{2} & 0 & \dfrac{1}{2} \\
+            \dfrac{1}{2} & 0 & -\dfrac{1}{2} \\
+            -\dfrac{1}{2} & 1 & \dfrac{1}{2} \\
+        \end{pmatrix}\begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 2 & 0 \\
+            0 & 0 & 2 \\
+        \end{pmatrix}\begin{pmatrix}
+            1 & 1 & 0 \\
+            0 & 1 & 1 \\
+            1 & -1 & 0 \\
+        \end{pmatrix} = \begin{pmatrix}
+            \dfrac{3}{2} & \dfrac{-1}{2} & 0 \\
+            \dfrac{-1}{2} & \dfrac{3}{2} & 0 \\
+            \dfrac{1}{2} & \dfrac{1}{2} & 2 \\
+        \end{pmatrix}$
+    \end{enumerate}
+    
+\section*{Problem 4}
+     $A = \lambda_1u_1u_1^T + \lambda_2u_2u_2^T + \dots + \lambda_nu_nu_n^T$
+        
+        $\lambda_1, \lambda_2 \dots \lambda_n$ - real numbers
+        
+        $\vec{v_1}, \vec{v_2} \dots \vec{v_n}$ - orthogonal basis of $R^n$
+        
+        Vector multiplication on its transpose always leads to symmetric matrix, so by all means A is symmetric.
+        In order to find eigenvectors and eigenvalues of matrix $A$ we could decompose it into $PD^T$ where matrix $P$ will consist of eigenvectors and matrix $D$ will contain all the eigenvalues as its diagonal entries.
+        
+\section*{Problem 5}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $vv^T$ is always symmetric $(I_n - vv^T)$ - doesn't affect the fact the matrix is symmetric. So matrix is orthogonally diagonalizable.
+        
+        $v^T = (v_1, v_2, v_3)$
+        
+        $v = \begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix}$
+        
+        $A = I - \begin{pmatrix}
+            v_1^2 & v_1v_2 & v_1v_3 \\
+            v_2v_1 & v_2^2 & v_2v_3 \\
+            v_1v_3 & v_2v_3 & v_3^3 \\
+        \end{pmatrix}$
+        
+        $tr(A) = (1 - v_1^2) + (1 - v_2^2) + (1 - v_3^2)$
+        
+        $A = I - \begin{pmatrix}
+            1 - v_1^2 - \lambda & v_1v_2 & v_1v_3 \\
+            v_2v_1 & 1 - v_2^2 - \lambda & v_2v_3 \\
+            v_1v_3 & v_2v_3 & 1 - v_3^3 - \lambda \\
+        \end{pmatrix}$
+        \item
+        $A = \begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1 \\
+        \end{pmatrix} - \begin{pmatrix}
+            1 & 0 & 1 \\
+            0 & 0 & 0 \\
+            1 & 0 & 1 \\
+        \end{pmatrix} = \begin{pmatrix}
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+            1 & 0 & 0 \\
+        \end{pmatrix}$
+        
+        $tr(A) = 1\quad\det(A) = -1$
+        
+        $\lambda_1 = 1\quad\lambda_2 = -1\quad\lambda_3 = 1$
+        
+        Skip writing calculation of eigenvectors...
+        
+        $v_1 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}\quad
+         v_2 = \begin{pmatrix} -1 \\ 0 \\ 1 \end{pmatrix}\quad
+         v_3 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}$
+         
+         $D = P^{-1}AP = \begin{pmatrix}
+            0 & 1 & 0 \\
+            -\dfrac{1}{2} & 0 & \dfrac{1}{2} \\
+            \dfrac{1}{2} & 0 & \dfrac{1}{2} \\
+        \end{pmatrix}\begin{pmatrix}
+            0 & 0 & 1 \\
+            0 & 1 & 0 \\
+            1 & 0 & 0 \\
+        \end{pmatrix}\begin{pmatrix}
+            0 & -1 & 1 \\
+            1 & 0 & 0 \\
+            0 & 1 & 1 \\
+        \end{pmatrix} = \begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & -1 & 0 \\
+            0 & 0 & 1 \\
+        \end{pmatrix}$
+    \end{enumerate}
+    
+\section*{Problem 6}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        if $A = A^{-^{T}}$ than matrix is Hermetian.
+        
+        $A = \begin{pmatrix}
+            1 & i & 0 \\
+            i & 2 & -i \\
+            0 & -i & 1 \\
+        \end{pmatrix}\quad
+        A^{-^{T}} = \begin{pmatrix}
+            1 & -i & 0 \\
+            i & 2 & i \\
+            0 & -i & 1 \\
+        \end{pmatrix}$
+        
+        $A$ is not equals to $A^{-^{T}}$
+        
+        Matrix is not Hermetian.
+        \item
+        $A = \begin{pmatrix}
+            1 & i & 0 \\
+            -i & 2 & -i \\
+            0 & i & 1 \\
+        \end{pmatrix}\quad
+        A^{-^{T}} = \begin{pmatrix}
+            1 & -i & 0 \\
+            i & 2 & i \\
+            0 & -i & 1 \\
+        \end{pmatrix}$
+        
+        $A$ is equals to $A^{-^{T}}$
+        
+        Matrix is Hermetian.
+    \end{enumerate}
+    
+\section*{Problem 7}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $\begin{pmatrix}
+            5 & -2 \\
+            -2 & 5 \\
+        \end{pmatrix}$
+        Sum in all row = 3
+        $tr(A) = 10 \quad \lambda_1 = 3 \lambda_2 = 7$
+        
+        All eigenvalues are positive. This means that matrix is positive definite.
+        
+        \item
+        $\begin{pmatrix}
+            3 & -1 & 0 \\
+            -1 & 4 & 1 \\
+            0 & 1 & 5 \\
+        \end{pmatrix}$
+        
+        This matrix is the same as in problem 1(c). lets take values from there. 
+        
+        $\lambda_1 = 4 \quad \lambda_2 = 4 + \sqrt{3} \quad \lambda_3 = 4 - \sqrt{3}$
+        
+        Positive definite.
+    \end{enumerate}
+    
+\section*{Problem 8}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $B^T = \begin{pmatrix}
+            1 & -1 & 2 \\
+            -3 & 3 & c \\
+        \end{pmatrix}\quad B = \begin{pmatrix}
+            1 & -3 \\
+            -1 & 3 \\
+            2 & c \\
+        \end{pmatrix}$
+        
+        $B^TB = \begin{pmatrix}
+            1+1+4 & -3-3+2c \\
+            -3-3+2c & 9+9+c^2 \\
+        \end{pmatrix} = \begin{pmatrix}
+            6 & -6+2c \\
+            -6+2c & 18+c^2 \\
+        \end{pmatrix}$
+        
+        $det(B^TB) = 6(18 + c^2) - (-6 + 2c)(-6 + 2c) = c^2 + 12c + 36$
+        
+        Roots are $c_{1,2} = -6$
+        
+        \textbf{Answer}: For all values except -6
+        \item
+        Since the only case matrix has no inverse is if $c = -6$, leads us to the fact that for all other values of c matrix is invertible, thus matrix is definite, because:
+        
+        If matrix is positive definite, than all of eigenvalues are positive and thus, 0 is not an eigenvalue. If 0 is an eigenvalue it shows that matrix is non invertible.
+        
+        We could state that matrix is positive definite if all entries on pivot positions are positive. So,
+        
+        $A = \begin{pmatrix}
+            6 & -6+2c \\
+            -6+2c & 18+c^2 \\
+        \end{pmatrix} = \begin{pmatrix}
+            1 & -1+\dfrac{1}{3}c \\
+            -1+\dfrac{1}{3}c & 3+\dfrac{c^2}{6} \\
+        \end{pmatrix} = \begin{pmatrix}
+            1 & -1+\dfrac{1}{3}c \\
+            0 & \dfrac{3+\dfrac{c^2}{6}}{-1 + \dfrac{c}{3}} - (-1 + \dfrac{c}{3}) \\
+        \end{pmatrix}$
+        
+        Now we need to find, when the expression at position $x_{22}$ will be grater than 0
+        
+        $\dfrac{(3+\dfrac{c^2}{6}) - (1 + \dfrac{c^2}{9})}{-1 + \dfrac{c}{3}} = \dfrac{ -\dfrac{c^2}{9}+\dfrac{c^2}{6} + 2 }{-1 + \dfrac{c}{3}}$
+        
+        Now we could see that nominator always positive.
+        
+        $-1 + \dfrac{c}{3} > 0$
+        
+        $\dfrac{c}{3} > 1$
+        
+        Matrix A is positive definite $\iff c > 3$
+    \end{enumerate}
+    
+\section*{Problem 9}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $S = \begin{pmatrix}
+            s & -14 & -4 \\
+            -4 & s & 4 \\
+            -4 & 4 & s \\
+        \end{pmatrix}\quad S^T = S$
+        
+        $det(S - I\lambda) = \begin{pmatrix}
+            s - \lambda & -14 & -4 \\
+            -4 & s - \lambda & 4 \\
+            -4 & 4 & s - \lambda \\
+        \end{pmatrix} = (S - \lambda)^3 - 16(S - \lambda) + 4(-4(S-\lambda) + 16) - 4(-16 + 4(S-\lambda)) = (S-\lambda)^3 - 48(S-\lambda) + 128$
+        
+        Lets make a substitution: $S-\lambda = x$
+        
+        So, we will have: $x^3 - 48x + 128$
+        
+        $x_1 = 4\quad x_2 = -8 \quad x_3 = 4$
+        
+        $S-\lambda_1 = 4\quad \lambda_1 = S-4$
+        
+        $S-\lambda_2 = -8\quad \lambda_2 = S+8$
+        
+        $S-\lambda_3 = 4\quad \lambda_3 = S-4$
+        
+        Now we see, that matrix will be positive definite $S > 4$ and negative definite $S < -8$
+        \item
+        $T = \begin{pmatrix}
+            t & -3 & 0 \\
+            -3 & t & 4 \\
+            0 & 4 & t \\
+        \end{pmatrix}\quad T^T = T$
+        
+        $det(T - I\lambda) = \begin{pmatrix}
+            t - \lambda & -3 & 0 \\
+            -3 & t - \lambda & 4 \\
+            0 & 4 & t - \lambda \\
+        \end{pmatrix} = (t - \lambda)^3 - 16(t - \lambda) + 3(-3(t-\lambda) = (t-\lambda)^3 - 25(t-\lambda)$
+        
+        $t - \lambda = x$
+        
+        $x^3 - 25x = 0$
+        
+        $x_1 = 5\quad x_2 = -5 \quad x_3 = 0$
+        
+        $t-\lambda_1 = 5\quad \lambda_1 = t-5$
+        
+        $t-\lambda_2 = -5\quad \lambda_2 = t+5$
+        
+        $t-\lambda_3 = 0\quad \lambda_3 = t$
+        
+       Now we see, that matrix will be positive definite $t > 5$ and negative definite $t < -5$
+    \end{enumerate}
+
+\section*{Problem 10}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $Q(x_1, x_2) = 2x_1^2 + 2x_2^2 - 2x_1x_2$
+        
+        $A = \begin{pmatrix}
+            2 & -1 \\
+            -1 & 2 \\
+        \end{pmatrix}$ 
+        
+        $\lambda_1 = 1\quad\lambda_2 = tr(A) - \lambda_1 = 3$
+        
+        $D = \begin{pmatrix}
+            1 & 0 \\
+            0 & 3 \\
+        \end{pmatrix}$
+        
+        $B_1 = \begin{pmatrix}
+            1 & -1 \\
+            -1 & 1 \\
+        \end{pmatrix}\quad \vec{v_1} = \begin{pmatrix}
+            1 \\
+            1 \\
+        \end{pmatrix}$
+        
+        $B_2 = \begin{pmatrix}
+            -1 & -1 \\
+            -1 & -1 \\
+        \end{pmatrix}\quad \vec{v_2} = \begin{pmatrix}
+            1 \\
+            -1 \\
+        \end{pmatrix}$
+        
+        $P = \begin{pmatrix}
+            1 & 1 \\
+            1 & -1 \\
+        \end{pmatrix}\quad A = PDP^{-1}\quad D = P^{-1}AP$
+        
+        $x = Py\quad x_1 = \begin{bmatrix}
+            x_1 \\
+            x_2 \\
+        \end{bmatrix} \quad y = \begin{bmatrix}
+            y_1 \\
+            y_2 \\
+        \end{bmatrix}$
+        
+        $y = P^{-1}x = P^Tx$
+        
+        $y^TDy = y_1^2 + 3y_2^2$
+        \item
+        $Q(x_1, x_2, x_3) = 3x_1^2 + 4x_2^2 + 5x_3^2 - 4x_1x_2 - 4x_2x_3$
+        
+        $det(A) = \begin{pmatrix}
+            3 & 2 & 0 \\
+            2 & 4 & -2 \\
+            0 & 2 & 5
+        \end{pmatrix} = \begin{pmatrix}
+            3 - \lambda & 2 & 0 \\
+            2 & 4 - \lambda & -2 \\
+            0 & 2 & 5 - \lambda
+        \end{pmatrix} = (3 - \lambda)((4 - \lambda)(5 - \lambda) - 4) - 2(10 - 2\lambda) = \lambda^3 - 12\lambda^2 + 39\lambda + 28 = 0$
+        
+        $\lambda_1 = 1\quad \lambda_2 = 4\quad \lambda_3 = 7$
+        
+        $Q(y) = y^TDy = y^T\begin{pmatrix}
+            1 & 0 & 0 \\
+            0 & 4 & 0 \\
+            0 & 0 & 7
+        \end{pmatrix}y = y_1^2 + 4y_2^2 + 7y_3^2$
+    \end{enumerate}
+    
+\section*{Problem 11}
+    $3x^2 + 4xy + 6y^2 = 14$
+    
+    $A = \begin{pmatrix}
+            3 & 2 \\
+            2 & 6 \\
+    \end{pmatrix}$
+        
+    $tr(A) = 9\quad det(A) = 14$
+        
+    $x^2 - 9x + 14 = 0$
+    
+    $\lambda_1 = 7\quad\lambda_2 = 2$
+    
+    $B_1 = \begin{pmatrix}
+            -4 & 2 \\
+            2 & -1 \\
+        \end{pmatrix}\quad \vec{v_1} = \begin{pmatrix}
+            \dfrac{1}{2} \\
+            1 \\
+        \end{pmatrix}$
+        
+        $B_2 = \begin{pmatrix}
+            1 & 2 \\
+            2 & 4 \\
+        \end{pmatrix}\quad \vec{v_2} = \begin{pmatrix}
+            1 \\
+            - \dfrac{1}{2} \\
+        \end{pmatrix}$
+        
+    $P = \begin{pmatrix}
+            \dfrac{1}{2} & 1 \\
+            1 & -\dfrac{1}{2} \\
+        \end{pmatrix}$
+        
+    Length $ = \sqrt{\dfrac{1}{4} + 1} = \sqrt{\dfrac{5}{4}}$
+    
+    
+\section*{Problem 12}
+    \begin{enumerate}[label=(\alph*)]
+        \item
+        $A = \begin{pmatrix}
+            3 & -2 & 1 \\
+            -2 & 6 & -2 \\
+            1 & -2 & 3
+        \end{pmatrix}\quad \vec{v_1} = \begin{pmatrix}
+            -1 \\
+            0 \\
+            1
+        \end{pmatrix}$
+        
+        $\lambda_1 = 2$
+        
+        $tr(A) = 12\quad det(A) = 32$
+        
+        $\lambda_2\lambda_3 = 16\quad\lambda_2 + \lambda_3 = 10$
+        
+        $\lambda_2 = 8\quad\lambda_3 = 2$
+        
+        $B_3 = \begin{pmatrix}
+            1 & -2 & 1 \\
+            -2 & 4 & -2 \\
+            1 & -2 & 1 \\
+        \end{pmatrix} \quad \vec{v_3} = \begin{pmatrix}
+            2x_2 - x_3 \\
+            x_2 \\
+            x_3 \\
+        \end{pmatrix} = \begin{pmatrix}
+            3 \\
+            1 \\
+            -1 \\
+        \end{pmatrix}$
+        
+        As we can see, $\vec{v_1}$ could be formed from solution for $B_3$
+        
+        $B_2 = \begin{pmatrix}
+            -5 & -2 & 1 \\
+            -2 & -2 & -2 \\
+            1 & -2 & -5 \\
+        \end{pmatrix} = \begin{pmatrix}
+            1 & 0 & -1 \\
+            0 & 1 & 2 \\
+            0 & 0 & 0 \\
+        \end{pmatrix} \quad \vec{v_2} = \begin{pmatrix}
+            1 \\
+            -2 \\
+            1 \\
+        \end{pmatrix}$
+        
+        $P^{-1}AP = \begin{pmatrix}
+            -\dfrac{1}{6} & \dfrac{2}{3} & \dfrac{7}{6} \\
+            \dfrac{1}{6} & -\dfrac{1}{3} & \dfrac{1}{6} \\
+            \dfrac{1}{3} & \dfrac{1}{3} & \dfrac{1}{3} \\
+        \end{pmatrix}\begin{pmatrix}
+            3 & -2 & 1 \\
+            -2 & 6 & -2 \\
+            1 & -2 & 3
+        \end{pmatrix}\begin{pmatrix}
+            -1 & 1 & 3 \\
+            0 & -2 & 1 \\
+            1 & 1 & -1 \\
+        \end{pmatrix} = \begin{pmatrix}
+            2 & 0 & 0 \\
+            0 & 8 & 0 \\
+            0 & 0 & 2 \\
+        \end{pmatrix}$
+        \item
+    \end{enumerate}
+    
+\end{document}
